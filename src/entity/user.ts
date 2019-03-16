@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Length, IsEmail } from 'class-validator';
+import { Book } from '../entity/book';
 
 @Entity()
 export class User {
@@ -9,13 +10,15 @@ export class User {
     @Column({
         length: 80
     })
-    @Length(10, 80)
     name: string;
 
     @Column({
         length: 100
     })
-    @Length(10, 100)
+    @Length(5, 100)
     @IsEmail()
     email: string;
+
+    @OneToMany(type => Book, book => book.user)
+    books: Book[];
 }

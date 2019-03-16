@@ -51,7 +51,7 @@ export default class BookController {
         bookToBeSaved.description = ctx.request.body.description;
         bookToBeSaved.user = user;
 
-        const errors: ValidationError[] = await validate(bookToBeSaved); // errors is an array of validation errors
+        const errors: ValidationError[] = await validate(bookToBeSaved); 
 //        ctx.body = JSON.stringify(bookToBeSaved);
 
         if (errors.length > 0) {
